@@ -1,0 +1,9 @@
+* Links
+- https://github.com/patriciogonzalezvivo/glslViewer
+- https://github.com/Hodapp87/cs6460_project
+- https://hodapp87.github.io/cs6460_project/
+- Inigo Quilez's slides and demo
+- Book of Shaders
+* TODO See if glslViewer works on my laptop
+* TODO If glslViewer works, what outputs do I need for CincyFP?
+* TODO At least one 2D fractal and one DE 3D fractal
