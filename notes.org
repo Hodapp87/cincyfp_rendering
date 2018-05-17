@@ -6,8 +6,14 @@
 - https://hodapp87.github.io/cs6460_project/
 - Inigo Quilez's slides and demo
 - Book of Shaders
+- Open Shading Language
+- https://github.com/quephird/nail-polish-bot
 * TODO See if glslViewer works on my laptop
 * TODO If glslViewer works, what outputs do I need for CincyFP?
+* TODO Could I do this in a Pi?
+  - Fast enough?
+  - Can I show the GLSL framebuffer and code at the same time?
+  - Can I show slides?  (Need GUI probably)
 * TODO At least one 2D fractal and one DE 3D fractal
 * Misc notes
 - Scanline rendering
@@ -18,6 +24,7 @@
 - Why Perlin noise matters
   - RenderMan
 - Shader languages are "functional" in some vague sense
+  - They sort of have to be because of running in parallel
 - Sphere tracing / DE
   - What meaningful 'functional' operations?
 - With procedural textures, shaders, shapes, and graphics in general
@@ -25,3 +32,13 @@
   functions, and representing as functions brings many benefits
   (such as opening it up to certain transformations and compositions
   otherwise not possible or not easy)
+- Graphics are sort of where I started with FP in the first place.
+  Used PolyRay & POV-Ray around 1999-2000, picked up POV-Ray again in
+  2004, made a lot of use of its ability to model things with
+  functions.  Tried to learn Lisp because I was interested in using
+  its macros to compile what were basically shaders to run more
+  quickly.  Learned Scala to mess around with some algorithmic art; it
+  led me to Haskell.
+- Perlin's paper and RenderMan shaders were in some sense a practical
+  solution to contemporary limitations on size, space, and compute
+  power.  Their "functional" basis is what made them effective.
