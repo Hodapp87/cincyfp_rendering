@@ -1,3 +1,5 @@
+* Tentative titles
+- "Rendering and Shading with Functions"?
 * Links
 - https://github.com/patriciogonzalezvivo/glslViewer
 - https://github.com/Hodapp87/cs6460_project
@@ -7,3 +9,19 @@
 * TODO See if glslViewer works on my laptop
 * TODO If glslViewer works, what outputs do I need for CincyFP?
 * TODO At least one 2D fractal and one DE 3D fractal
+* Misc notes
+- Scanline rendering
+- Raytracing to sphere tracing, both as a way to produce shapes from
+  functions
+  - CSG as a specific version of the above
+- Path tracing (shading vs. rendering - they are independent)
+- Why Perlin noise matters
+  - RenderMan
+- Shader languages are "functional" in some vague sense
+- Sphere tracing / DE
+  - What meaningful 'functional' operations?
+- With procedural textures, shaders, shapes, and graphics in general
+  we can represent a lot of content of a scene not as "data" but as
+  functions, and representing as functions brings many benefits
+  (such as opening it up to certain transformations and compositions
+  otherwise not possible or not easy)
