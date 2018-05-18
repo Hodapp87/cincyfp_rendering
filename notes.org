@@ -5,9 +5,12 @@
 - https://github.com/Hodapp87/cs6460_project
 - https://hodapp87.github.io/cs6460_project/
 - Inigo Quilez's slides and demo
+  - [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
 - Book of Shaders
 - Open Shading Language
-- https://github.com/quephird/nail-polish-bot
+- https://github.com/quephird/nail-polish-bot ?
+- http://nuclear.mutantstargoat.com/articles/sdr_fract/
+- http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/
 * TODO See if glslViewer works on my laptop
 * TODO If glslViewer works, what outputs do I need for CincyFP?
 * TODO Could I do this in a Pi?
@@ -39,6 +42,16 @@
   its macros to compile what were basically shaders to run more
   quickly.  Learned Scala to mess around with some algorithmic art; it
   led me to Haskell.
+  - I wrote things in C & SDL back in 2003-2004, and gravitated
+    towards writing things basically as shaders.  I remember working
+    on some similar things in early 2007 and I ran into the problem
+    that a CPU simply could not push pixels to the framebuffer fast
+    enough to do what I needed in real-time.  An interesting thing
+    happened sometime after: every computer, phone, and tablet started
+    shipping with fast hardware support for the exact kind of
+    computation I needed.
 - Perlin's paper and RenderMan shaders were in some sense a practical
   solution to contemporary limitations on size, space, and compute
   power.  Their "functional" basis is what made them effective.
+- Realtime & offline shading languages emerged from different
+  contexts, but both with very similar (functional) semantics.
