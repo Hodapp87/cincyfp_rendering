@@ -3,15 +3,105 @@
 #+AUTHOR: Chris Hodapp
 
 * Introduction
+  - Graphics were what first interested me in computers.
+    - Dazzle
+    - DOOM
+    - POV-Ray, PolyRay
+    - Toy Story?
+  - ...and then sort of what led me to FP.
+    - Generating images pixel-by-pixel
+    - C, SDL, framebuffers
+    - Shaders
 
 #+BEGIN_NOTES
-  - Graphics - my earliest experience
-  - Brother & POV-Ray, Dazzle
-  - Video games
-  - As a result, graphics sort of led me to FP
-    - Raytracing heavily mathematical things
-    - SDL & C, shaders
+  - Can demo Dazzle here in DOSBOX
+  - XaOS?
+  - Doom screenshot?
+  - The FP stuff: Lisp for macros, Scala for an EDSL
 #+END_NOTES
+
+* Movies & 3D CGI
+
+  - Various practical problems:
+    - Raytracing is slow
+    - Scanline rendering is faster, but looks bad
+    - Image are sort of bulky and inelegant
+
+#+BEGIN_NOTES
+  - Have a good definition/example of scanline rendering
+#+END_NOTES
+
+** Pixar & RenderMan
+
+   - Facetize everything to triangles < 1 pixel
+   - RenderMan Shading Language
+   - Pre-compute & pre-shade
+   - Distributes easily across a cluster
+   - [[https://www.youtube.com/watch?v=ffIZSAZRzDA][Tin Toy (1988)]]: First CGI film to win Oscar
+   - Toy Story (1995): First full-length CGI film
+
+** Perlin noise
+
+   - [[https://dl.acm.org/citation.cfm?id=325247][Ken Perlin: An image synthesizer (1985)]]
+   - Well-behaved, deterministic, fast randomness
+
+#+BEGIN_NOTES
+  - Emerged right around the same time as REYES & RenderMan Shading
+    Language
+  - What can I show with Perlin noise?
+#+END_NOTES
+
+** The point...
+
+- Both sort of replaced *data* with *functions*.
+  - Instead of triangle meshes: basic shapes + transformations
+  - Instead of image maps: compositions of noise functions
+- Both used functional approaches as practical solutions.
+
+* 3D Video Games
+  - Short, mostly-inaccurate history:
+    - Custom render engines in software (Doom, Quake, Descent)
+    - Hardware rendering for pushing triangles
+    - Fixed hardware pipelines...
+    - More flexible hardware pipelines......
+    - ?????
+    - Now: Almost every computer, phone, tablet has a stream processor
+      orders of magnitudes faster than the CPU, and programmable in
+      (at minimum) OpenGL Shading Language
+
+#+BEGIN_NOTES
+  - A parallel track focused more on realtime
+  - They inherited most of the limitations of scanline rendering
+#+END_NOTES
+
+* Shaders
+
+  - These were the eventual result for both offline rendering
+    (i.e. movie CGI) and realtime (i.e. video games).
+
+#+BEGIN_NOTES
+  - Both realtime and offline shaders have this 'functional' nature
+  - Realtime: Limitations in order to allow parallel scheduling
+  - Offline: Limitations in order to allow distributed use
+  - Both benefit from very little "global" data and synchronization
+    (no textures, just coordinates and small algorithms)
+#+END_NOTES
+
+* Raytracing
+
+#+BEGIN_NOTES
+  - Ways of composing shapes
+  - Ways of composing textures
+  - Rendering shapes from equations
+  - Show some things I rendered?
+  - This can be where I step into ray marchers, I guess
+#+END_NOTES
+
+* Modern Day
+  - Raytracing is now much more common
+  - RenderMan Shading Language now deprecated
+  - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
+    - [[http://www.blender.org/][Blender]] implements OSL
 
 * Final notes
   - Twitter: @hodapp87

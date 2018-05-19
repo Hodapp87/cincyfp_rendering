@@ -20,22 +20,20 @@
     - Couldn't do speaker notes most likely
 * TODO At least one 2D fractal and one DE 3D fractal
 * Misc notes
+- We ordinarily think of functional programming in contrast to
+  imperative programming.  Graphics rendering is an interesting case
+  study of a sort of functional programming not in contrast to
+  imperative programming - but in contrast to simply static data.
+- Shaders are an example of this; ray marchers / sphere tracers are
+  another somewhat more obscure one.
+
 - Scanline rendering
 - Raytracing to sphere tracing, both as a way to produce shapes from
   functions
   - CSG as a specific version of the above
 - Path tracing (shading vs. rendering - they are independent)
-- Why Perlin noise matters
-  - RenderMan
-- Shader languages are "functional" in some vague sense
-  - They sort of have to be because of running in parallel
 - Sphere tracing / DE
   - What meaningful 'functional' operations?
-- With procedural textures, shaders, shapes, and graphics in general
-  we can represent a lot of content of a scene not as "data" but as
-  functions, and representing as functions brings many benefits
-  (such as opening it up to certain transformations and compositions
-  otherwise not possible or not easy)
 - Graphics are sort of where I started with FP in the first place.
   Used PolyRay & POV-Ray around 1999-2000, picked up POV-Ray again in
   2004, made a lot of use of its ability to model things with
@@ -51,11 +49,7 @@
     happened sometime after: every computer, phone, and tablet started
     shipping with fast hardware support for the exact kind of
     computation I needed.
-- Perlin's paper and RenderMan shaders were in some sense a practical
-  solution to contemporary limitations on size, space, and compute
-  power.  Their "functional" basis is what made them effective.
-- Realtime & offline shading languages emerged from different
-  contexts, but both with very similar (functional) semantics.
+- Demoscene & pouet
 * Limits
 - Don't try to live-code a sphere tracer.
 - Don't explain too much about ray-tracers.
