@@ -9,6 +9,12 @@
 - https://github.com/quephird/nail-polish-bot ?
 - http://nuclear.mutantstargoat.com/articles/sdr_fract/
 - http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/
+- http://iquilezles.org/www/articles/menger/menger.htm
+- http://iquilezles.org/www/articles/juliasets3d/juliasets3d.htm
+- http://iquilezles.org/www/articles/mandelbulb/mandelbulb.htm
+- http://iquilezles.org/www/articles/distancefractals/distancefractals.htm
+- https://www.cs.cmu.edu/~kmcrane/Projects/QuaternionJulia/paper.pdf
+- http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
 * TODO High-level slides
 * TODO Implementations
 * TODO See if glslViewer works on my laptop

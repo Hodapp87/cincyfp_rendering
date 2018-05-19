@@ -85,9 +85,16 @@
   - Offline: Limitations in order to allow distributed use
   - Both benefit from very little "global" data and synchronization
     (no textures, just coordinates and small algorithms)
+  - Show off some glslViewer examples here?
 #+END_NOTES
 
 * Raytracing
+
+  - As name implies: traces camera rays from each pixel into the
+    scene.
+  - Renders anything with a ray intersection formula.
+  - Handles things like reflection, refraction, translucency with no
+    faking required.
 
 #+BEGIN_NOTES
   - Ways of composing shapes
@@ -95,6 +102,75 @@
   - Rendering shapes from equations
   - Show some things I rendered?
   - This can be where I step into ray marchers, I guess
+#+END_NOTES
+
+** Raytracing limitations: Lighting
+
+   - Simple raytracing by itself handles only *direct illumination*.
+   - [[https://en.wikipedia.org/wiki/Global_illumination][Global illumination]]
+     - Numerical approximations of the [[https://en.wikipedia.org/wiki/Rendering_equation][rendering equation]]
+       - [[https://en.wikipedia.org/wiki/Unbiased_rendering][Unbiased]] vs. biased renderers
+     - Path tracing
+     - Metropolis Light Transport
+     - Photon mapping
+     - [[https://en.wikipedia.org/wiki/Radiosity_(computer_graphics)][Radiosity]]
+     - [[https://en.wikipedia.org/wiki/Ambient_occlusion][Ambient occlusion]]
+   - This is a "hard problem"(tm) and I'm ignoring it here.
+
+ #+BEGIN_NOTES
+   - Give real-world example of why this is needed
+   - Explain why ray tracing by itself doesn't cover this
+   - Show examples of some (e.g. AO)
+   - http://www.yafaray.org/documentation/userguide/lightingmethods
+ #+END_NOTES
+
+** Raytracing limitations: Shapes/primitives
+
+   - What if you want to render a shape that's well-defined...
+   - but you don't have a ray intersection formula?
+     - Implicit surfaces, isosurfaces, level surfaces
+   - Facetize it? Approximate it?
+
+* Raymarching
+
+  - A broad class of iterative methods for rendering:
+    - Surfaces that have no analytic intersection formula
+    - Things that don't really have surfaces (e.g. volumes with
+      varying density)
+  - [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.438.4926&rep=rep1&type=pdf][Ken Perlin again: Hypertexture (1989)]]
+  - [[https://www.researchgate.net/publication/234777691_Ray_tracing_deterministic_3-D_fractals][John C. Hart: Ray tracing deterministic 3D fractals (1989)]]
+  - [[http://gigavoxels.inrialpes.fr/][GigaVoxels]]?
+
+#+BEGIN_NOTES
+#+END_NOTES
+
+** Sphere tracing / distance estimation
+
+  - Ray marching from a *distance field* or *distance estimator*
+    function
+    - For any point in 3D space, returns a lower bound on the nearest
+      distance to the surface/scene/object/whatever
+    - Equivalently: For every 3D point /p/, gives the radius of a
+      sphere centered at /p/ for which none of the surface is inside
+      the sphere. ("Unbounding volumes")
+  - [[http://mathinfo.univ-reims.fr/IMG/pdf/hart94sphere.pdf][Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces]] (John C. Hart)
+  - Inigo Quilez: [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
+
+#+BEGIN_NOTES
+  - Link to some of IQ's shadertoy or pouet examples
+  - Note on Lipschitz continuity
+#+END_NOTES
+
+*** Why/how?
+
+    - Because it's cool
+    - Because you can do it in realtime on a GPU
+    - Blah blah blah mathematical elegance
+    - Domain transformations
+      - [[http://iquilezles.org/www/articles/distfunctions/distfunctions.htm][Modeling with distance functions]]
+
+#+BEGIN_NOTES
+  - Link to some of IQ's shadertoy or pouet examples
 #+END_NOTES
 
 * Modern Day
