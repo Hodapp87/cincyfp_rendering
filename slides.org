@@ -1,0 +1,20 @@
+#+TITLE: Graphics Shaders as (sort of) Functional Programming
+#+DATE: 2018-06-12
+#+AUTHOR: Chris Hodapp
+
+* Introduction
+
+#+BEGIN_NOTES
+  - Graphics - my earliest experience
+  - Brother & POV-Ray, Dazzle
+  - Video games
+  - As a result, graphics sort of led me to FP
+    - Raytracing heavily mathematical things
+    - SDL & C, shaders
+#+END_NOTES
+
+* Final notes
+  - Twitter: @hodapp87
+  - GitHub: https://github.com/hodapp87
+  - Slides proudly generated with Emacs, [[https://github.com/yjwen/org-reveal][org-reveal]], and [[https://revealjs.com/][reveal.js]].
+  - FIXME: Other links?

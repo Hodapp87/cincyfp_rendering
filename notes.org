@@ -1,5 +1,3 @@
-* Tentative titles
-- "Rendering and Shading with Functions"?
 * Links
 - https://github.com/patriciogonzalezvivo/glslViewer
 - https://github.com/Hodapp87/cs6460_project
@@ -11,12 +9,15 @@
 - https://github.com/quephird/nail-polish-bot ?
 - http://nuclear.mutantstargoat.com/articles/sdr_fract/
 - http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/
+* TODO High-level slides
+* TODO Implementations
 * TODO See if glslViewer works on my laptop
 * TODO If glslViewer works, what outputs do I need for CincyFP?
 * TODO Could I do this in a Pi?
   - Fast enough?
   - Can I show the GLSL framebuffer and code at the same time?
   - Can I show slides?  (Need GUI probably)
+    - Couldn't do speaker notes most likely
 * TODO At least one 2D fractal and one DE 3D fractal
 * Misc notes
 - Scanline rendering
@@ -55,3 +56,14 @@
   power.  Their "functional" basis is what made them effective.
 - Realtime & offline shading languages emerged from different
   contexts, but both with very similar (functional) semantics.
+* Limits
+- Don't try to live-code a sphere tracer.
+- Don't explain too much about ray-tracers.
+- Keep global illumination to a minimum.
+- Don't let little tangents distract you now.  Get the basic structure
+  and go from there.
+* Old stuff to show
+- Dazzle? Acid Warp?
+- SDL Acidity?
+- POV-Ray renders?
+- Old Python Acidity stuff?
