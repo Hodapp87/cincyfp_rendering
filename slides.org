@@ -104,6 +104,11 @@
   - This can be where I step into ray marchers, I guess
 #+END_NOTES
 
+** POV-Ray, Clojure, Twitter, and Heroku?
+
+   - https://github.com/quephird/nail-polish-bot
+   - https://twitter.com/nailpolishbot
+
 ** Raytracing limitations: Lighting
 
    - Simple raytracing by itself handles only *direct illumination*.
@@ -130,7 +135,6 @@
    - but you don't have a ray intersection formula?
      - Implicit surfaces, isosurfaces, level surfaces
    - Facetize it? Approximate it?
-
 * Raymarching
 
   - A broad class of iterative methods for rendering:
@@ -154,7 +158,7 @@
       sphere centered at /p/ for which none of the surface is inside
       the sphere. ("Unbounding volumes")
   - [[http://mathinfo.univ-reims.fr/IMG/pdf/hart94sphere.pdf][Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces]] (John C. Hart)
-  - Inigo Quilez: [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
+  - Íñigo Quílez: [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
 
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
@@ -174,10 +178,17 @@
 #+END_NOTES
 
 * Modern Day
-  - Raytracing is now much more common
-  - RenderMan Shading Language now deprecated
+  - Raytracing is now much more common in movie CGI
+  - Intel and NVidia are also pushing it for realtime rendering
+  - RenderMan Shading Language is now deprecated
   - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
     - [[http://www.blender.org/][Blender]] implements OSL
+
+* Other Links
+  - [[https://github.com/patriciogonzalezvivo/glslViewer][glslViewer]] & [[https://thebookofshaders.com/][Book of Shaders]]
+  - ShaderToy
+  - Basically anything from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
+  - https://hodapp87.github.io/cs6460_project/
 
 * Final notes
   - Twitter: @hodapp87

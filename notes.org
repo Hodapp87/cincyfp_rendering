@@ -1,12 +1,4 @@
 * Links
-- https://github.com/patriciogonzalezvivo/glslViewer
-- https://github.com/Hodapp87/cs6460_project
-- https://hodapp87.github.io/cs6460_project/
-- Inigo Quilez's slides and demo
-  - [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
-- Book of Shaders
-- Open Shading Language
-- https://github.com/quephird/nail-polish-bot ?
 - http://nuclear.mutantstargoat.com/articles/sdr_fract/
 - http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/
 - http://iquilezles.org/www/articles/menger/menger.htm
@@ -15,53 +7,27 @@
 - http://iquilezles.org/www/articles/distancefractals/distancefractals.htm
 - https://www.cs.cmu.edu/~kmcrane/Projects/QuaternionJulia/paper.pdf
 - http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
-* TODO High-level slides
-* TODO Implementations
+* TODO Understand rendering model
+* TODO Understand DE fractals...
 * TODO See if glslViewer works on my laptop
 * TODO If glslViewer works, what outputs do I need for CincyFP?
-* TODO Could I do this in a Pi?
+* TODO Could I do this on a Pi?
   - Fast enough?
   - Can I show the GLSL framebuffer and code at the same time?
   - Can I show slides?  (Need GUI probably)
     - Couldn't do speaker notes most likely
-* TODO At least one 2D fractal and one DE 3D fractal
 * Misc notes
 - We ordinarily think of functional programming in contrast to
   imperative programming.  Graphics rendering is an interesting case
   study of a sort of functional programming not in contrast to
   imperative programming - but in contrast to simply static data.
 - Shaders are an example of this; ray marchers / sphere tracers are
-  another somewhat more obscure one.
-
-- Scanline rendering
-- Raytracing to sphere tracing, both as a way to produce shapes from
-  functions
-  - CSG as a specific version of the above
-- Path tracing (shading vs. rendering - they are independent)
-- Sphere tracing / DE
-  - What meaningful 'functional' operations?
-- Graphics are sort of where I started with FP in the first place.
-  Used PolyRay & POV-Ray around 1999-2000, picked up POV-Ray again in
-  2004, made a lot of use of its ability to model things with
-  functions.  Tried to learn Lisp because I was interested in using
-  its macros to compile what were basically shaders to run more
-  quickly.  Learned Scala to mess around with some algorithmic art; it
-  led me to Haskell.
-  - I wrote things in C & SDL back in 2003-2004, and gravitated
-    towards writing things basically as shaders.  I remember working
-    on some similar things in early 2007 and I ran into the problem
-    that a CPU simply could not push pixels to the framebuffer fast
-    enough to do what I needed in real-time.  An interesting thing
-    happened sometime after: every computer, phone, and tablet started
-    shipping with fast hardware support for the exact kind of
-    computation I needed.
+  another somewhat more obscure one.  Raytracers sort of are in the
+  sense that they accomodate ways of composing shapes (like CSG), and
+  many functional descriptions of them (though this is a stretch)
+- The same guy is behind Book of Shaders and glslViewer
+- glslViewer 
 - Demoscene & pouet
-* Limits
-- Don't try to live-code a sphere tracer.
-- Don't explain too much about ray-tracers.
-- Keep global illumination to a minimum.
-- Don't let little tangents distract you now.  Get the basic structure
-  and go from there.
 * Old stuff to show
 - Dazzle? Acid Warp?
 - SDL Acidity?
