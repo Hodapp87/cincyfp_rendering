@@ -9,10 +9,12 @@
   - This doesn't say much about how the formula is derived
 - http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
 - https://www.mattkeeter.com/projects/ao/
+  - That is now [[https://libfive.com/][libfive]] ([[https://github.com/libfive/libfive][GitHub]]) it seems
+- [[https://en.wikipedia.org/wiki/Function_representation][F-Rep]] = isosurface?
+  - [[https://en.wikipedia.org/wiki/HyperFun][HyperFun]] - very old but same concept
 * TODO Understand rendering model
 * TODO Understand DE fractals...
-* TODO See if glslViewer works on my laptop
-* TODO If glslViewer works, what outputs do I need for CincyFP?
+* TODO Is my laptop fast enough?  What adapters might I need?
 * TODO Could I do this on a Pi?
   - Fast enough?
   - Can I show the GLSL framebuffer and code at the same time?
@@ -27,9 +29,29 @@
   another somewhat more obscure one.  Raytracers sort of are in the
   sense that they accomodate ways of composing shapes (like CSG), and
   many functional descriptions of them (though this is a stretch)
+- The benefits that I bring up here apply generally to
+  parametric/procedural design.
 - The same guy is behind Book of Shaders and glslViewer
-- glslViewer 
 - Demoscene & pouet
+- I am not entirely using the term "isosurface" correctly. f(X)=0 is
+  still an isosurface, but broadly it's any f(X)=C.
+- F-Rep = implicit surface = an isosurface for constant value 0
+- All signed distance bounds or signed distance estimates are
+  automatically F-Reps.  All SDFs are also signed distance bounds.
+- Marching cubes algorithm can turn isosurface to a mesh.
+- F-Reps or implicit surfaces are the "functional" representation to
+  start on here.  SDFs/bounds are the more constrained form of them
+  that sphere tracing can work with.  The focus should be on the
+  "functional" source here, not on the algorithm itself.
+- Raytracing & intersection formulas: Not a lot of shapes behave this
+  way, and not a lot of transformations behave this way.  Meshes and
+  voxels (and possibly NURBS and other splines) are a sort of
+  exception, but in some sense, the "least" functional one since they
+  are basically flat data, not something procedural.
+- What is the best path to lead to this?
+  - Video games & demoscene?
+  - Modeling?
+  - Raytracing limitations?
 * Old stuff to show
 - Dazzle? Acid Warp?
 - SDL Acidity?
