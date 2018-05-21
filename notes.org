@@ -6,7 +6,9 @@
 - http://iquilezles.org/www/articles/mandelbulb/mandelbulb.htm
 - http://iquilezles.org/www/articles/distancefractals/distancefractals.htm
 - https://www.cs.cmu.edu/~kmcrane/Projects/QuaternionJulia/paper.pdf
+  - This doesn't say much about how the formula is derived
 - http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
+- https://www.mattkeeter.com/projects/ao/
 * TODO Understand rendering model
 * TODO Understand DE fractals...
 * TODO See if glslViewer works on my laptop

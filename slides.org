@@ -163,6 +163,10 @@
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
   - Note on Lipschitz continuity
+  - Terminology is sort of awful. Hart's sphere tracing paper uses
+    "distance bound" for a function giving lower distance bound, and
+    "distance function" for exact distance.  His older fractal paper
+    uses "distance estimate" rather than "distance bound", I think.
 #+END_NOTES
 
 *** Why/how?
