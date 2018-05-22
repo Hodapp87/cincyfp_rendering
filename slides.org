@@ -248,8 +248,9 @@
 
 * Other Links
   - [[https://github.com/patriciogonzalezvivo/glslViewer][glslViewer]] & [[https://thebookofshaders.com/][Book of Shaders]]
-  - ShaderToy
   - Basically anything from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
+  - [[http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/][Syntopia: Distance Estimated 3D Fractals]] & [[https://syntopia.github.io/Fragmentarium/][Fragmentarium]] / [[https://github.com/3Dickulus/FragM][FragM]]
+  - ShaderToy
   - https://hodapp87.github.io/cs6460_project/
 
 * Final notes

@@ -12,6 +12,7 @@
   - That is now [[https://libfive.com/][libfive]] ([[https://github.com/libfive/libfive][GitHub]]) it seems
 - [[https://en.wikipedia.org/wiki/Function_representation][F-Rep]] = isosurface?
   - [[https://en.wikipedia.org/wiki/HyperFun][HyperFun]] - very old but same concept
+- Fragmentarium
 * TODO Understand rendering model
 * TODO Understand DE fractals...
 * TODO Is my laptop fast enough?  What adapters might I need?
@@ -50,6 +51,13 @@
   - Video games & demoscene?
   - Modeling?
   - Raytracing limitations?
+- Explaining Mandelbulb formulas in detail is out of scope.  Perhaps
+  show Mandelbulb but that's it.
+- However, [[http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/][Distance Estimated 3D Fractals (III): Folding Space]] gives
+  some fractals (IFS-like rather than escape-time) that look much more
+  feasible, and use things like absolute value to fold space, paired
+  with rotations.
+- Don't fall into a rabbit hole on fractals.  Yet.
 * Old stuff to show
 - Dazzle? Acid Warp?
 - SDL Acidity?
