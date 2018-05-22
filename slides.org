@@ -123,6 +123,7 @@
    - This is a "hard problem"(tm) and I'm ignoring it here.
 
  #+BEGIN_NOTES
+   - How necessary is this slide?
    - Give real-world example of why this is needed
    - Explain why ray tracing by itself doesn't cover this
    - Show examples of some (e.g. AO)
@@ -135,11 +136,16 @@
    - but you don't have a ray intersection formula?
      - Implicit surfaces, isosurfaces, level surfaces
    - Facetize it? Approximate it?
+
+#+BEGIN_NOTES
+- Next slide - raymarching - is one answer to 
+#+END_NOTES
+
 * Raymarching
 
   - A broad class of iterative methods for rendering:
-    - Surfaces that have no analytic intersection formula
-    - Things that don't really have surfaces (e.g. volumes with
+    - surfaces that have no analytic intersection formula
+    - things that don't really have surfaces (e.g. volumes with
       varying density)
   - [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.438.4926&rep=rep1&type=pdf][Ken Perlin again: Hypertexture (1989)]]
   - [[https://www.researchgate.net/publication/234777691_Ray_tracing_deterministic_3-D_fractals][John C. Hart: Ray tracing deterministic 3D fractals (1989)]]
@@ -169,16 +175,68 @@
     uses "distance estimate" rather than "distance bound", I think.
 #+END_NOTES
 
-*** Why/how?
-
-    - Because it's cool
-    - Because you can do it in realtime on a GPU
-    - Blah blah blah mathematical elegance
-    - Domain transformations
-      - [[http://iquilezles.org/www/articles/distfunctions/distfunctions.htm][Modeling with distance functions]]
+** Why/how?
+   - Because you can do it in realtime completely in a GPU shader
+   - Blah blah blah mathematical elegance
+   - It's an amazingly flexible representation
+     - Domain transformations (see: [[http://iquilezles.org/www/articles/distfunctions/distfunctions.htm][Modeling with distance functions]])
+     - CSG
+   - Because it's cool, mostly
 
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
+#+END_NOTES
+
+** Implicit Surfaces, Isosurfaces, F-Reps
+
+   - [[https://en.wikipedia.org/wiki/Function_representation][F-Reps]] = implicit surfaces = isosurfaces
+   - Marching cubes algorithm can turn these into meshes.
+   - Signed distance estimates/bounds are automatically F-Reps
+   - SDFs (signed distance functions/fields) are automatically signed
+     distance estimates (thus, F-Reps)
+   - Sorry, I didn't invent this terminology
+
+#+BEGIN_NOTES
+  - Give equation and maybe a sphere example?
+  - Maybe split to 2 slides
+#+END_NOTES
+
+** The point...
+
+   - Raytracing relies on either:
+     - very limited parametric shapes (as it requires ray intersection
+       formulas),
+     - Dense triangle meshes that are approximate
+   - Neither one is a particularly "functional" approach.
+
+#+BEGIN_NOTES
+  - This is oversimplifying a little
+  - Meshes are just sort of flat data
+  - Not many transformations work meaningfully on the parametric
+    shapes (without simply facetizing them)
+#+END_NOTES
+
+** The point...
+
+   - F-Reps bypass all of this
+   - Arbitrary domain transformations
+
+#+BEGIN_NOTES
+  - Explain/show what domain transformations are
+#+END_NOTES
+
+* Summary
+
+  - Ordinarily, we view functional programming in contrast to
+    imperative/procedural/OOP.
+  - Graphics rendering can be seen from a different angle: as a study
+    into how FP methods were used as ways of generating/transforming
+    data (e.g. scenes, models, textures) rather than simply using
+    static data.
+  - Parametric/procedural design broadly encompasses this
+
+#+BEGIN_NOTES
+  - Needs tied together a bit better
 #+END_NOTES
 
 * Modern Day

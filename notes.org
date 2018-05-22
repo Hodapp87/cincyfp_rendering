@@ -29,8 +29,6 @@
   another somewhat more obscure one.  Raytracers sort of are in the
   sense that they accomodate ways of composing shapes (like CSG), and
   many functional descriptions of them (though this is a stretch)
-- The benefits that I bring up here apply generally to
-  parametric/procedural design.
 - The same guy is behind Book of Shaders and glslViewer
 - Demoscene & pouet
 - I am not entirely using the term "isosurface" correctly. f(X)=0 is
