@@ -8,14 +8,18 @@
     are basically flat data, not something procedural.
   - Don't fall into a rabbit hole on fractals.  Yet.
 * TODO Read 'Book of Shaders'
-* TODO Understand rendering model? (Necessary?)
-* TODO Is my laptop fast enough?  What adapters might I need?
-* TODO Could I do this on a Pi?
-  - Fast enough?  (Try it)
-  - Probably can't run libfive very well
-  - Can I show the GLSL framebuffer and code at the same time?
-  - Can I show slides?  (Need GUI probably)
-    - Couldn't do speaker notes most likely
+* TODO Hardware for presentation
+  - [ ] Is my laptop fast enough?  What adapters might I need?
+  - [ ] Figure out what causes my laptop's glslViewer issues
+    - It was fine after a fresh reset. Suspending?  Switching screens?
+  - [ ] Does glslViewer run on my NVidia Jetson?
+  - [ ] Could I do this on a Pi?
+    - Fast enough?  (Try it)
+    - Probably can't run libfive very well
+    - Can I show the GLSL framebuffer and code at the same time?
+    - Can I show slides?  (Need GUI probably)
+      - Couldn't do speaker notes most likely
+* TODO Understand shading model? (Necessary?)
 * TODO Demoscene & pouet?
 * TODO Explain isosurfaces starting from 2D examples
 * TODO Show some implicit surfaces I did in POV-Ray?
