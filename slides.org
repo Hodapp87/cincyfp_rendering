@@ -1,4 +1,4 @@
-#+TITLE: Graphics Shaders as (sort of) Functional Programming
+#+TITLE: Graphics Rendering as (sort of) Functional Programming
 #+DATE: 2018-06-12
 #+AUTHOR: Chris Hodapp
 
@@ -20,45 +20,78 @@
   - The FP stuff: Lisp for macros, Scala for an EDSL
 #+END_NOTES
 
-* Movies & 3D CGI
+** Motivation
 
-  - Various practical problems:
-    - Raytracing is slow
-    - Scanline rendering is faster, but looks bad
-    - Image are sort of bulky and inelegant
-
-#+BEGIN_NOTES
-  - Have a good definition/example of scanline rendering
-#+END_NOTES
-
-** Pixar & RenderMan
-
-   - Facetize everything to triangles < 1 pixel
-   - RenderMan Shading Language
-   - Pre-compute & pre-shade
-   - Distributes easily across a cluster
-   - [[https://www.youtube.com/watch?v=ffIZSAZRzDA][Tin Toy (1988)]]: First CGI film to win Oscar
-   - Toy Story (1995): First full-length CGI film
-
-** Perlin noise
-
-   - [[https://dl.acm.org/citation.cfm?id=325247][Ken Perlin: An image synthesizer (1985)]]
-   - Well-behaved, deterministic, fast randomness
+   - Normal CincyFP focus:
+     - functional paradigm in contrast to imperative
+     - best practices & design for software
+   - Focus in this talk: Examples from graphics rendering that are
+     from a different angle.
+   - i.e. FP methods not as an alternative to imperative methods - but
+     alternative to "static" data, by representing that data as an
+     algorithm for generating it.
+   - Parametric/procedural design broadly covers this
 
 #+BEGIN_NOTES
-  - Emerged right around the same time as REYES & RenderMan Shading
-    Language
-  - What can I show with Perlin noise?
 #+END_NOTES
 
-** The point...
+** Focus
+   
+   - Graphics shaders
+     - /Realtime (i.e. video games)/
+       - OpenGL Shading Language (GLSL)
+     - /Offline (i.e. production-grade movie CGI)/
+       - [[https://github.com/imageworks/OpenShadingLanguage][Open Shading Language]] (OSL) from Sony
+       - RenderMan Shading Language from Pixar (deprecated for OSL &
+         C++)
+   - 3D models as functional representations ([[https://en.wikipedia.org/wiki/Function_representation][F-Reps]])
+     - a.k.a. implicit surfaces/isosurfaces
 
-- Both sort of replaced *data* with *functions*.
-  - Instead of triangle meshes: basic shapes + transformations
-  - Instead of image maps: compositions of noise functions
-- Both used functional approaches as practical solutions.
+#+BEGIN_NOTES
+   - Give good definition of both
+   - Yes, OpenGL Shading Language and Open Shading Language are
+     completely unrelated (aside from both being shading languages)
+#+END_NOTES
 
-* 3D Video Games
+* Graphics shaders
+  
+  - Family of domain-specific languages (typically C/Java-like with
+    additional constraints)
+  - Ultimately: for writing functions whose input is a point
+    in 2D/3D space and whose output is a color value (RGB, RGBA)
+    - Sort of a generalization of an image, which also maps points to
+      color
+  - [[https://github.com/patriciogonzalezvivo/glslViewer][glslViewer]] & [[https://thebookofshaders.com/][Book of Shaders]]
+
+#+BEGIN_NOTES
+   - I've sort of glossed over that the inputs also include things
+     like camera positions, but they don't really change the fundamentals
+   - TODO: Does glslViewer link belong here or later?
+#+END_NOTES
+
+** Shader functions
+
+   - Minus a few exceptions (time, other parameters, image inputs),
+     these are pure functions that run separately on each element -
+     typically a pixel or texel
+     - No side effects.
+     - No memory across runs.
+     - No communication.
+
+#+BEGIN_NOTES
+#+END_NOTES
+
+** Shader functions
+
+   - Why: Shaders must be able to run deterministically and in
+     parallel across many elements (typically pixels or texels).
+     - Movie CGI: Distributed across whole cluster
+     - Video games: Run in parallel on GPU
+   - Almost all of you now have several devices with dedicated silicon
+     for handling shaders and a compiler for GLSL
+
+#+BEGIN_NOTES
+  - This is also why CUDA & OpenCL exist
   - Short, mostly-inaccurate history:
     - Custom render engines in software (Doom, Quake, Descent)
     - Hardware rendering for pushing triangles
@@ -68,25 +101,32 @@
     - Now: Almost every computer, phone, tablet has a stream processor
       orders of magnitudes faster than the CPU, and programmable in
       (at minimum) OpenGL Shading Language
-
-#+BEGIN_NOTES
-  - A parallel track focused more on realtime
-  - They inherited most of the limitations of scanline rendering
 #+END_NOTES
 
-* Shaders
+** Perlin noise
 
-  - These were the eventual result for both offline rendering
-    (i.e. movie CGI) and realtime (i.e. video games).
+    - [[https://dl.acm.org/citation.cfm?id=325247][Ken Perlin: An image synthesizer (1985)]]
+    - Well-behaved, deterministic, fast randomness
 
-#+BEGIN_NOTES
-  - Both realtime and offline shaders have this 'functional' nature
-  - Realtime: Limitations in order to allow parallel scheduling
-  - Offline: Limitations in order to allow distributed use
-  - Both benefit from very little "global" data and synchronization
-    (no textures, just coordinates and small algorithms)
-  - Show off some glslViewer examples here?
-#+END_NOTES
+ #+BEGIN_NOTES
+   - Emerged right around the same time as REYES & RenderMan Shading
+     Language
+   - TODO: What can I show with Perlin noise?
+ #+END_NOTES
+
+** Summary
+
+   - Technical constraints led to FP approaches - but these approaches
+     brought other benefits:
+     - Very lightweight representation (versus stored images), even
+       for complex "natural" textures
+     - Unlimited (ish) resolution
+     - Independence from underlying renderer
+
+ #+BEGIN_NOTES
+   - I am cheating slightly since some of these benefits are from
+     procedural expression, and that it's FP-ish is irrelevant
+ #+END_NOTES
 
 * Raytracing
 
@@ -97,61 +137,41 @@
     faking required.
 
 #+BEGIN_NOTES
-  - Ways of composing shapes
-  - Ways of composing textures
-  - Rendering shapes from equations
-  - Show some things I rendered?
-  - This can be where I step into ray marchers, I guess
+  - A lot of the clever use of shaders in RenderMan was to work around
+    limitations of scanline rendering (as REYES was heavily oriented
+    around, rather than raytracing).
+  - However, shaders evolved to handle all sorts of less "faked"
+    lighting
+  - TODO: Visualizations? POV-Ray?
 #+END_NOTES
 
 ** POV-Ray, Clojure, Twitter, and Heroku?
 
-   - https://github.com/quephird/nail-polish-bot
-   - https://twitter.com/nailpolishbot
+   - [[https://twitter.com/nailpolishbot][Nail polish bot]]
 
-** Raytracing limitations: Lighting
+** Limitations on shapes/primitives
 
-   - Simple raytracing by itself handles only *direct illumination*.
-   - [[https://en.wikipedia.org/wiki/Global_illumination][Global illumination]]
-     - Numerical approximations of the [[https://en.wikipedia.org/wiki/Rendering_equation][rendering equation]]
-       - [[https://en.wikipedia.org/wiki/Unbiased_rendering][Unbiased]] vs. biased renderers
-     - Path tracing
-     - Metropolis Light Transport
-     - Photon mapping
-     - [[https://en.wikipedia.org/wiki/Radiosity_(computer_graphics)][Radiosity]]
-     - [[https://en.wikipedia.org/wiki/Ambient_occlusion][Ambient occlusion]]
-   - This is a "hard problem"(tm) and I'm ignoring it here.
-
- #+BEGIN_NOTES
-   - How necessary is this slide?
-   - Give real-world example of why this is needed
-   - Explain why ray tracing by itself doesn't cover this
-   - Show examples of some (e.g. AO)
-   - http://www.yafaray.org/documentation/userguide/lightingmethods
- #+END_NOTES
-
-** Raytracing limitations: Shapes/primitives
-
-   - What if you want to render a shape that's well-defined...
-   - but you don't have a ray intersection formula?
+   - What if you don't have a ray intersection formula?
      - Implicit surfaces, isosurfaces, level surfaces
-   - Facetize it? Approximate it?
-
+     - Displacement
+     - Fractals
+   - Turn it to a triangle mesh and use that?  (Use marching cubes algorithm?)
 #+BEGIN_NOTES
-- Next slide - raymarching - is one answer to 
+   - Next slide - raymarching - is one answer to this
 #+END_NOTES
 
 * Raymarching
 
-  - A broad class of iterative methods for rendering:
-    - surfaces that have no analytic intersection formula
-    - things that don't really have surfaces (e.g. volumes with
-      varying density)
+  - Similar to raytracing - but handles cases where it must approximate.
+    - surfaces that are a pain (no analytic intersection formula)
+    - things with no surfaces (e.g. volumes with varying density)
   - [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.438.4926&rep=rep1&type=pdf][Ken Perlin again: Hypertexture (1989)]]
   - [[https://www.researchgate.net/publication/234777691_Ray_tracing_deterministic_3-D_fractals][John C. Hart: Ray tracing deterministic 3D fractals (1989)]]
-  - [[http://gigavoxels.inrialpes.fr/][GigaVoxels]]?
+  - [[http://gigavoxels.inrialpes.fr/][GigaVoxels]]
 
 #+BEGIN_NOTES
+  - TODO: Show some examples of these (maybe both fractals and
+    volumes)
 #+END_NOTES
 
 ** Sphere tracing / distance estimation
@@ -190,7 +210,6 @@
 ** Implicit Surfaces, Isosurfaces, F-Reps
 
    - [[https://en.wikipedia.org/wiki/Function_representation][F-Reps]] = implicit surfaces = isosurfaces
-   - Marching cubes algorithm can turn these into meshes.
    - Signed distance estimates/bounds are automatically F-Reps
    - SDFs (signed distance functions/fields) are automatically signed
      distance estimates (thus, F-Reps)
@@ -225,30 +244,10 @@
   - Explain/show what domain transformations are
 #+END_NOTES
 
-* Summary
-
-  - Ordinarily, we view functional programming in contrast to
-    imperative/procedural/OOP.
-  - Graphics rendering can be seen from a different angle: as a study
-    into how FP methods were used as ways of generating/transforming
-    data (e.g. scenes, models, textures) rather than simply using
-    static data.
-  - Parametric/procedural design broadly encompasses this
-
-#+BEGIN_NOTES
-  - Needs tied together a bit better
-#+END_NOTES
-
-* Modern Day
-  - Raytracing is now much more common in movie CGI
-  - Intel and NVidia are also pushing it for realtime rendering
-  - RenderMan Shading Language is now deprecated
-  - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
-    - [[http://www.blender.org/][Blender]] implements OSL
 
 * Other Links
   - [[https://github.com/patriciogonzalezvivo/glslViewer][glslViewer]] & [[https://thebookofshaders.com/][Book of Shaders]]
-  - Basically anything from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
+  - Literally everything from from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
   - [[http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/][Syntopia: Distance Estimated 3D Fractals]] & [[https://syntopia.github.io/Fragmentarium/][Fragmentarium]] / [[https://github.com/3Dickulus/FragM][FragM]]
   - ShaderToy
   - https://hodapp87.github.io/cs6460_project/
@@ -257,4 +256,61 @@
   - Twitter: @hodapp87
   - GitHub: https://github.com/hodapp87
   - Slides proudly generated with Emacs, [[https://github.com/yjwen/org-reveal][org-reveal]], and [[https://revealjs.com/][reveal.js]].
-  - FIXME: Other links?
+
+* Slush Bucket
+** Movies & 3D CGI
+
+   - Various practical problems:
+     - Raytracing is slow
+     - Scanline rendering is faster, but looks bad
+     - Image are sort of bulky and inelegant
+
+ #+BEGIN_NOTES
+   - Have a good definition/example of scanline rendering
+ #+END_NOTES
+
+*** Pixar & RenderMan
+
+    - Facetize everything to triangles < 1 pixel
+    - RenderMan Shading Language
+    - Pre-compute & pre-shade
+    - Distributes easily across a cluster
+    - [[https://www.youtube.com/watch?v=ffIZSAZRzDA][Tin Toy (1988)]]: First CGI film to win Oscar
+    - Toy Story (1995): First full-length CGI film
+
+** The point...
+
+- Both sort of replaced *data* with *functions*.
+  - Instead of triangle meshes: basic shapes + transformations
+  - Instead of image maps: compositions of noise functions
+- Both used functional approaches as practical solutions.
+
+** Raytracing limitations: Lighting
+
+   - Simple raytracing by itself handles only *direct illumination*.
+   - [[https://en.wikipedia.org/wiki/Global_illumination][Global illumination]]
+     - Numerical approximations of the [[https://en.wikipedia.org/wiki/Rendering_equation][rendering equation]]
+       - [[https://en.wikipedia.org/wiki/Unbiased_rendering][Unbiased]] vs. biased renderers
+     - Path tracing
+     - Metropolis Light Transport
+     - Photon mapping
+     - [[https://en.wikipedia.org/wiki/Radiosity_(computer_graphics)][Radiosity]]
+     - [[https://en.wikipedia.org/wiki/Ambient_occlusion][Ambient occlusion]]
+   - This is a "hard problem"(tm) and I'm ignoring it here.
+
+ #+BEGIN_NOTES
+   - How necessary is this slide?
+   - Give real-world example of why this is needed
+   - Explain why ray tracing by itself doesn't cover this
+   - Show examples of some (e.g. AO)
+   - http://www.yafaray.org/documentation/userguide/lightingmethods
+ #+END_NOTES
+
+
+** Modern Day
+   - Raytracing is now much more common in movie CGI
+   - Intel and NVidia are also pushing it for realtime rendering
+   - RenderMan Shading Language is now deprecated
+   - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
+     - [[http://www.blender.org/][Blender]] implements OSL
+

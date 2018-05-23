@@ -1,65 +1,42 @@
 * Links
-- http://nuclear.mutantstargoat.com/articles/sdr_fract/
-- http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/
-- http://iquilezles.org/www/articles/menger/menger.htm
-- http://iquilezles.org/www/articles/juliasets3d/juliasets3d.htm
-- http://iquilezles.org/www/articles/mandelbulb/mandelbulb.htm
-- http://iquilezles.org/www/articles/distancefractals/distancefractals.htm
-- https://www.cs.cmu.edu/~kmcrane/Projects/QuaternionJulia/paper.pdf
-  - This doesn't say much about how the formula is derived
-- http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
-- https://www.mattkeeter.com/projects/ao/
-  - That is now [[https://libfive.com/][libfive]] ([[https://github.com/libfive/libfive][GitHub]]) it seems
-- [[https://en.wikipedia.org/wiki/Function_representation][F-Rep]] = isosurface?
-  - [[https://en.wikipedia.org/wiki/HyperFun][HyperFun]] - very old but same concept
-- Fragmentarium
-* TODO Understand rendering model
-* TODO Understand DE fractals...
+  - http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
+* Misc notes
+  - Raytracing & intersection formulas: Not a lot of shapes behave this
+    way, and not a lot of transformations behave this way.  Meshes and
+    voxels (and possibly NURBS and other splines) are a sort of
+    exception, but in some sense, the "least" functional one since they
+    are basically flat data, not something procedural.
+  - Don't fall into a rabbit hole on fractals.  Yet.
+* TODO Read 'Book of Shaders'
+* TODO Understand rendering model? (Necessary?)
 * TODO Is my laptop fast enough?  What adapters might I need?
 * TODO Could I do this on a Pi?
-  - Fast enough?
+  - Fast enough?  (Try it)
+  - Probably can't run libfive very well
   - Can I show the GLSL framebuffer and code at the same time?
   - Can I show slides?  (Need GUI probably)
     - Couldn't do speaker notes most likely
-* Misc notes
-- We ordinarily think of functional programming in contrast to
-  imperative programming.  Graphics rendering is an interesting case
-  study of a sort of functional programming not in contrast to
-  imperative programming - but in contrast to simply static data.
-- Shaders are an example of this; ray marchers / sphere tracers are
-  another somewhat more obscure one.  Raytracers sort of are in the
-  sense that they accomodate ways of composing shapes (like CSG), and
-  many functional descriptions of them (though this is a stretch)
-- The same guy is behind Book of Shaders and glslViewer
-- Demoscene & pouet
-- I am not entirely using the term "isosurface" correctly. f(X)=0 is
-  still an isosurface, but broadly it's any f(X)=C.
-- F-Rep = implicit surface = an isosurface for constant value 0
-- All signed distance bounds or signed distance estimates are
-  automatically F-Reps.  All SDFs are also signed distance bounds.
-- Marching cubes algorithm can turn isosurface to a mesh.
-- F-Reps or implicit surfaces are the "functional" representation to
-  start on here.  SDFs/bounds are the more constrained form of them
-  that sphere tracing can work with.  The focus should be on the
-  "functional" source here, not on the algorithm itself.
-- Raytracing & intersection formulas: Not a lot of shapes behave this
-  way, and not a lot of transformations behave this way.  Meshes and
-  voxels (and possibly NURBS and other splines) are a sort of
-  exception, but in some sense, the "least" functional one since they
-  are basically flat data, not something procedural.
-- What is the best path to lead to this?
-  - Video games & demoscene?
-  - Modeling?
-  - Raytracing limitations?
-- Explaining Mandelbulb formulas in detail is out of scope.  Perhaps
-  show Mandelbulb but that's it.
-- However, [[http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/][Distance Estimated 3D Fractals (III): Folding Space]] gives
-  some fractals (IFS-like rather than escape-time) that look much more
-  feasible, and use things like absolute value to fold space, paired
-  with rotations.
-- Don't fall into a rabbit hole on fractals.  Yet.
-* Old stuff to show
-- Dazzle? Acid Warp?
-- SDL Acidity?
-- POV-Ray renders?
-- Old Python Acidity stuff?
+* TODO Demoscene & pouet?
+* TODO Explain isosurfaces starting from 2D examples
+* TODO Show some implicit surfaces I did in POV-Ray?
+* TODO Note that 2D approach is an image creation method on its own 
+  - Link to Functional Images or whatever
+  - Show some of my examples?
+* TODO Don't make sphere tracing the focus.  It's incidental.
+  - F-Reps or implicit surfaces are the "functional" representation to
+    start on here.  SDFs/bounds are the more constrained form of them
+    that sphere tracing can work with.  The focus should be on the
+    "functional" source here, not on the algorithm itself.
+* TODO If time: Give some folded IFS-derived fractals.
+  - However, [[http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/][Distance Estimated 3D Fractals (III): Folding Space]] gives
+    some fractals (IFS-like rather than escape-time) that look much more
+    feasible, and use things like absolute value to fold space, paired
+    with rotations.
+  - Explaining Mandelbulb formulas in detail is out of scope.  Perhaps
+    show Mandelbulb but that's it.
+* TODO Code: Show compositions of textures/shaders (e.g. Perlin noise)
+  - Note that glslViewer allows animation & interaction here, and easy
+    2D, and all of Book of Shaders uses it
+* TODO Code: domain transformations in libfive
+* TODO Code (maybe): Isosurfaces in POV-Ray
+* TODO Code (maybe): Shaders in POV-Ray
