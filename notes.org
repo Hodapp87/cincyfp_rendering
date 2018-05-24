@@ -8,6 +8,9 @@
     are basically flat data, not something procedural.
   - Don't fall into a rabbit hole on fractals.  Yet.
 * TODO Read 'Book of Shaders'
+  - This is an excellent introduction that uses GLSL
+* TODO Heightmap example?
+  - It's a good way to show noise, maybe.
 * TODO Hardware for presentation
   - [ ] Is my laptop fast enough?  What adapters might I need?
   - [ ] Figure out what causes my laptop's glslViewer issues
