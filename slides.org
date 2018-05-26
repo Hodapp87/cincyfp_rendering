@@ -1,4 +1,4 @@
-#+TITLE: Graphics Rendering as (sort of) Functional Programming
+#+TITLE: Shaders = Lazy Images, F-Reps = Lazy Geometry.
 #+DATE: 2018-06-12
 #+AUTHOR: Chris Hodapp
 
@@ -30,7 +30,7 @@
    - i.e. FP methods not as an alternative to imperative methods - but
      alternative to "static" data, by representing that data as an
      algorithm for generating it.
-   - Parametric/procedural design broadly covers this
+
 
 #+BEGIN_NOTES
 #+END_NOTES
@@ -79,6 +79,9 @@
      - No communication.
 
 #+BEGIN_NOTES
+   - TODO: Shader example from ~glslViewer bunny.frag bunny.vert bunny.pl~
+   - Show diffuse shader, ambient, specular (if I can get it)
+   - Shaders in "real" usage can be sort of arcane...
 #+END_NOTES
 
 ** Shader functions
@@ -103,6 +106,9 @@
       (at minimum) OpenGL Shading Language
 #+END_NOTES
 
+** Examples...
+   [[https://upload.wikimedia.org/wikipedia/commons/6/6b/Phong_components_version_4.png]]
+
 ** Perlin noise
 
     - [[https://dl.acm.org/citation.cfm?id=325247][Ken Perlin: An image synthesizer (1985)]]
@@ -120,8 +126,8 @@
      brought other benefits:
      - Very lightweight representation (versus stored images), even
        for complex "natural" textures
-     - Unlimited (ish) resolution
-     - Independence from underlying renderer
+     - Can be sampled at arbitrary resolution
+     - Independent from underlying renderer
 
  #+BEGIN_NOTES
    - I am cheating slightly since some of these benefits are from

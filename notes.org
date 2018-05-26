@@ -1,12 +1,29 @@
-* Links
-  - http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/Evans-Fast_Approximations_for_Lighting_of_Dynamic_Scenes-print.pdf
 * Misc notes
   - Raytracing & intersection formulas: Not a lot of shapes behave this
     way, and not a lot of transformations behave this way.  Meshes and
     voxels (and possibly NURBS and other splines) are a sort of
     exception, but in some sense, the "least" functional one since they
     are basically flat data, not something procedural.
-  - Don't fall into a rabbit hole on fractals.  Yet.
+  - What examples can I find for showing how shaders are flexible for
+    3D scenes (not 2D)... without actually having to write detailed
+    examples?
+  - Surface opacity/translucency from shaders!
+  - Perhaps explain (if time) volume rendering via raymarching as a
+    case related to distance fields?
+  - It is possible to represent infinite models and scenes with
+    distance fields
+    - Simple cases (infinite tiling/mirroring), more complex (IFS),
+      ridiculously complex (the entire Mandelbulb fractal).
+    - Compare this with something like lazy sequences
+* Main focuses for remaining work
+  - Fix up sphere tracing explanation.
+  - Lots of picture examples!
+  - Lots of code examples!
+* TODO Don't make sphere tracing the focus.  It's incidental.
+  - F-Reps or implicit surfaces are the "functional" representation to
+    start on here.  SDFs/bounds are the more constrained form of them
+    that sphere tracing can work with.  The focus should be on the
+    "functional" source here, not on the algorithm itself.
 * TODO Read 'Book of Shaders'
   - This is an excellent introduction that uses GLSL
 * TODO Heightmap example?
@@ -29,11 +46,6 @@
 * TODO Note that 2D approach is an image creation method on its own 
   - Link to Functional Images or whatever
   - Show some of my examples?
-* TODO Don't make sphere tracing the focus.  It's incidental.
-  - F-Reps or implicit surfaces are the "functional" representation to
-    start on here.  SDFs/bounds are the more constrained form of them
-    that sphere tracing can work with.  The focus should be on the
-    "functional" source here, not on the algorithm itself.
 * TODO If time: Give some folded IFS-derived fractals.
   - However, [[http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/][Distance Estimated 3D Fractals (III): Folding Space]] gives
     some fractals (IFS-like rather than escape-time) that look much more
@@ -41,9 +53,11 @@
     with rotations.
   - Explaining Mandelbulb formulas in detail is out of scope.  Perhaps
     show Mandelbulb but that's it.
+* TODO Find workable sphere tracer (or use what I had)
 * TODO Code: Show compositions of textures/shaders (e.g. Perlin noise)
   - Note that glslViewer allows animation & interaction here, and easy
     2D, and all of Book of Shaders uses it
 * TODO Code: domain transformations in libfive
+* TODO Code: GLSL sphere tracer & Perlin noise perturbation
 * TODO Code (maybe): Isosurfaces in POV-Ray
 * TODO Code (maybe): Shaders in POV-Ray
