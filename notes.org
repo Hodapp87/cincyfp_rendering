@@ -15,6 +15,7 @@
     - Simple cases (infinite tiling/mirroring), more complex (IFS),
       ridiculously complex (the entire Mandelbulb fractal).
     - Compare this with something like lazy sequences
+  - GigaVoxels is sort of procedural too
 * Main focuses for remaining work
   - Fix up sphere tracing explanation.
   - Lots of picture examples!
@@ -39,7 +40,6 @@
     - Can I show the GLSL framebuffer and code at the same time?
     - Can I show slides?  (Need GUI probably)
       - Couldn't do speaker notes most likely
-* TODO Understand shading model? (Necessary?)
 * TODO Demoscene & pouet?
 * TODO Explain isosurfaces starting from 2D examples
 * TODO Show some implicit surfaces I did in POV-Ray?

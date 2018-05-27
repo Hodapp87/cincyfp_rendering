@@ -31,7 +31,6 @@
      alternative to "static" data, by representing that data as an
      algorithm for generating it.
 
-
 #+BEGIN_NOTES
 #+END_NOTES
 
@@ -132,9 +131,55 @@
  #+BEGIN_NOTES
    - I am cheating slightly since some of these benefits are from
      procedural expression, and that it's FP-ish is irrelevant
+   - Hold all of these 2D transformations in mind
  #+END_NOTES
 
-* Raytracing
+* Geometry, Shapes, Models
+
+  - Representation depends heavily on requirements...
+    - Is shape raytraced or scanline rendered?
+    - Facetized to arbitrary precision? (e.g. RenderMan)
+    - Numerically exact? (3D CAD/CAM)
+    - Sparse vs. dense?  How compact must it be?
+    - Did 3D measurements or simulations produce it?  (MRI, CT scan,
+      laser scan, Finite Element Analysis)
+    - What transformations should be easy?
+    - Must it be a manifold with interior/exterior?
+
+#+BEGIN_NOTES
+  - Geometry & shaders don't have sharp boundaries.  In RenderMan and
+    in more modern OpenGL, shaders influence geometry directly.
+  - However, shaders evolved to handle all sorts of less "faked"
+    lighting
+  - TODO: Visualizations? POV-Ray?
+#+END_NOTES
+
+** Examples
+
+   - Meshes, voxels
+   - Point clouds
+   - Analytic primitives, closed-form intersection formulas
+   - NURBS
+   - Isosurfaces, SDFs
+   - [[http://gigavoxels.inrialpes.fr/][GigaVoxels]]
+
+** Example: Triangle mesh
+
+   https://upload.wikimedia.org/wikipedia/commons/f/fb/Dolphin_triangle_mesh.png
+
+** Example: Point clouds
+
+   [[https://upload.wikimedia.org/wikipedia/commons/4/4c/Point_cloud_torus.gif]]
+
+** Example: Voxels
+
+   https://upload.wikimedia.org/wikipedia/commons/4/47/Ribo-Voxels.png
+
+** Example: NURBS
+
+   https://upload.wikimedia.org/wikipedia/commons/e/ea/NURBS_3-D_surface.gif
+
+** Raytracing
 
   - As name implies: traces camera rays from each pixel into the
     scene.
@@ -151,6 +196,10 @@
   - TODO: Visualizations? POV-Ray?
 #+END_NOTES
 
+** Raytracing
+
+   https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ray_trace_diagram.svg/875px-Ray_trace_diagram.svg.png
+
 ** POV-Ray, Clojure, Twitter, and Heroku?
 
    - [[https://twitter.com/nailpolishbot][Nail polish bot]]
@@ -158,7 +207,7 @@
 ** Limitations on shapes/primitives
 
    - What if you don't have a ray intersection formula?
-     - Implicit surfaces, isosurfaces, level surfaces
+     - Isosurfaces, SDFs
      - Displacement
      - Fractals
    - Turn it to a triangle mesh and use that?  (Use marching cubes algorithm?)
@@ -166,39 +215,58 @@
    - Next slide - raymarching - is one answer to this
 #+END_NOTES
 
-* Raymarching
+* Raymarching & F-Reps
 
-  - Similar to raytracing - but handles cases where it must approximate.
-    - surfaces that are a pain (no analytic intersection formula)
-    - things with no surfaces (e.g. volumes with varying density)
+  - Raymarching is sort of like raytracing, but for where intersection
+    must be iterative & approximate rather than analytical:
+    - Surfaces that are a pain (no analytic intersection formula)
+    - Things with no surfaces (e.g. volumes with varying density)
   - [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.438.4926&rep=rep1&type=pdf][Ken Perlin again: Hypertexture (1989)]]
   - [[https://www.researchgate.net/publication/234777691_Ray_tracing_deterministic_3-D_fractals][John C. Hart: Ray tracing deterministic 3D fractals (1989)]]
-  - [[http://gigavoxels.inrialpes.fr/][GigaVoxels]]
 
 #+BEGIN_NOTES
   - TODO: Show some examples of these (maybe both fractals and
     volumes)
 #+END_NOTES
 
+** Isosurfaces
+
+   - As far as we care: isosurfaces are functions $f(x,y,z)$
+     representing a 3D surface in which, for 3D point $(x,y,z)$:
+     - $f(x,y,z) > 0$ outside of surface
+     - $f(x,y,z) < 0$ inside of surface
+     - $f(x,y,z) = 0$ on surface
+   - Simple example: A sphere of radius $R$ centered at $(0,0,0)$ is
+     $$f(x,y,z) = (x^2+y^2+z^2)-R^2$$
+
+** I'm sorry. I didn't name them.
+
+   - *Isosurface = [[https://en.wikipedia.org/wiki/Function_representation][F-Rep]] = implicit surface = level surface*
+   - *Signed distance estimate = signed distance bound = unbounding volume (?)*
+     - Isosurface with more rules: $(x,y,z)$ is distance
+       $\geq |f(x,y,z)|$ away from nearest point on surface
+   - *SDF = signed distance field = signed distance function*
+     - Signed distance bound (thus, isosurface also) with more rules:
+       $(x,y,z)$ is distance $|f(x,y,z)|$ away from nearest point on
+       surface.
+
+** I'm sorry, part 2
+
+   - Any [[https://en.wikipedia.org/wiki/Lipschitz_continuity][Lipschitz continuous]] isosurface can be turned to a signed
+     distance bound, which is Left As An Exercise To the Reader(tm) or
+     just go read [[http://mathinfo.univ-reims.fr/IMG/pdf/hart94sphere.pdf][Sphere Tracing: A Geometric Method for the
+     Antialiased Ray Tracing of Implicit Surfaces]] by John C. Hart
+   - Let's all just agree to ignore unsigned distance
+     bounds/fields/functions/estimates because I've completely stopped
+     caring at this point
+
 ** Sphere tracing / distance estimation
 
-  - Ray marching from a *distance field* or *distance estimator*
-    function
-    - For any point in 3D space, returns a lower bound on the nearest
-      distance to the surface/scene/object/whatever
-    - Equivalently: For every 3D point /p/, gives the radius of a
-      sphere centered at /p/ for which none of the surface is inside
-      the sphere. ("Unbounding volumes")
-  - [[http://mathinfo.univ-reims.fr/IMG/pdf/hart94sphere.pdf][Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces]] (John C. Hart)
+  - Ray marching from distance bounds/estimates
   - Íñigo Quílez: [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
 
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
-  - Note on Lipschitz continuity
-  - Terminology is sort of awful. Hart's sphere tracing paper uses
-    "distance bound" for a function giving lower distance bound, and
-    "distance function" for exact distance.  His older fractal paper
-    uses "distance estimate" rather than "distance bound", I think.
 #+END_NOTES
 
 ** Why/how?
@@ -211,19 +279,6 @@
 
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
-#+END_NOTES
-
-** Implicit Surfaces, Isosurfaces, F-Reps
-
-   - [[https://en.wikipedia.org/wiki/Function_representation][F-Reps]] = implicit surfaces = isosurfaces
-   - Signed distance estimates/bounds are automatically F-Reps
-   - SDFs (signed distance functions/fields) are automatically signed
-     distance estimates (thus, F-Reps)
-   - Sorry, I didn't invent this terminology
-
-#+BEGIN_NOTES
-  - Give equation and maybe a sphere example?
-  - Maybe split to 2 slides
 #+END_NOTES
 
 ** The point...
@@ -253,7 +308,7 @@
 
 * Other Links
   - [[https://github.com/patriciogonzalezvivo/glslViewer][glslViewer]] & [[https://thebookofshaders.com/][Book of Shaders]]
-  - Literally everything from from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
+  - Literally everything from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
   - [[http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/][Syntopia: Distance Estimated 3D Fractals]] & [[https://syntopia.github.io/Fragmentarium/][Fragmentarium]] / [[https://github.com/3Dickulus/FragM][FragM]]
   - ShaderToy
   - https://hodapp87.github.io/cs6460_project/
@@ -261,7 +316,7 @@
 * Final notes
   - Twitter: @hodapp87
   - GitHub: https://github.com/hodapp87
-  - Slides proudly generated with Emacs, [[https://github.com/yjwen/org-reveal][org-reveal]], and [[https://revealjs.com/][reveal.js]].
+  - Slides proudly generated with Emacs & [[https://github.com/yjwen/org-reveal][org-reveal]]
 
 * Slush Bucket
 ** Movies & 3D CGI
