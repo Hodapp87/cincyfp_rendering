@@ -10,18 +10,10 @@
   - Surface opacity/translucency from shaders!
   - GigaVoxels is sort of procedural too
 * Main focuses for remaining work
-  - Fix up sphere tracing explanation.
   - Lots of picture examples!
   - Lots of code examples!
-* TODO Don't make sphere tracing the focus.  It's incidental.
-  - F-Reps or implicit surfaces are the "functional" representation to
-    start on here.  SDFs/bounds are the more constrained form of them
-    that sphere tracing can work with.  The focus should be on the
-    "functional" source here, not on the algorithm itself.
 * TODO Read 'Book of Shaders'
   - This is an excellent introduction that uses GLSL
-* TODO Heightmap example?
-  - It's a good way to show noise, maybe.
 * TODO Hardware for presentation
   - [ ] Is my laptop fast enough?  What adapters might I need?
   - [ ] Figure out what causes my laptop's glslViewer issues
@@ -42,6 +34,7 @@
   - Explaining Mandelbulb formulas in detail is out of scope.  Perhaps
     show Mandelbulb but that's it.
 * TODO Find workable sphere tracer (or use what I had)
+  - Inigo's is fine if I can just figure out the weird issues
 * TODO Code: Show compositions of textures/shaders (e.g. Perlin noise)
   - Note that glslViewer allows animation & interaction here, and easy
     2D, and all of Book of Shaders uses it

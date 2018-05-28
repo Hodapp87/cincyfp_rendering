@@ -218,11 +218,12 @@
 
 ** Limitations on shapes/primitives
 
+   - This analytical approach is elegant and all, but...
    - What if you don't have a ray intersection formula?
      - Isosurfaces, SDFs
      - Displacement
      - Fractals
-   - Turn it to a triangle mesh and use that?  (Use marching cubes algorithm?)
+   - Approximate with meshes/NURBS?
 #+BEGIN_NOTES
    - Next slide - raymarching - is one answer to this
 #+END_NOTES
