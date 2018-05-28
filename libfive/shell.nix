@@ -16,11 +16,15 @@ let stdenv = pkgs.stdenv;
         boost qt5.qtimageformats guile ];
 
       enableParallelBuilding = true;
-  
+
+      # Rename "Studio" binary to "libfive-studio" to be more obvious
+      postFixup = ''
+        mv "$out/bin/Studio" "$out/bin/libfive-studio"
+      '';  
       meta = with stdenv.lib; {
         description = "Infrastructure for solid modeling";
         homepage = https://libfive.com/;
-        #maintainers = with maintainers; [ abbradar ];
+        maintainers = with maintainers; [ hodapp ];
         license = licenses.lpgl2;
         platforms = platforms.linux;
       };

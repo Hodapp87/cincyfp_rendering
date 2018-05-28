@@ -260,22 +260,23 @@
      bounds/fields/functions/estimates because I've completely stopped
      caring at this point
 
+** Why bother?
+   - Because you can do it in realtime completely in a GPU shader
+   - Blah blah blah mathematical elegance
+   - Similar handy things as shaders, plus 3D stuff:
+     - Domain transformations (see: [[http://iquilezles.org/www/articles/distfunctions/distfunctions.htm][Modeling with distance functions]])
+     - CSG
+   - Because it's cool, mostly
+
+#+BEGIN_NOTES
+  - Link to some of IQ's shadertoy or pouet examples
+  - Show libfive examples
+#+END_NOTES
+
 ** Sphere tracing / distance estimation
 
   - Ray marching from distance bounds/estimates
   - Íñigo Quílez: [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
-
-#+BEGIN_NOTES
-  - Link to some of IQ's shadertoy or pouet examples
-#+END_NOTES
-
-** Why/how?
-   - Because you can do it in realtime completely in a GPU shader
-   - Blah blah blah mathematical elegance
-   - It's an amazingly flexible representation
-     - Domain transformations (see: [[http://iquilezles.org/www/articles/distfunctions/distfunctions.htm][Modeling with distance functions]])
-     - CSG
-   - Because it's cool, mostly
 
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
