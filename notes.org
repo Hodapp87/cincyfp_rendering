@@ -40,6 +40,7 @@
     - Can I show the GLSL framebuffer and code at the same time?
     - Can I show slides?  (Need GUI probably)
       - Couldn't do speaker notes most likely
+    - Does mouse work?
 * TODO Demoscene & pouet?
 * TODO Explain isosurfaces starting from 2D examples
 * TODO Show some implicit surfaces I did in POV-Ray?
@@ -61,3 +62,61 @@
 * TODO Code: GLSL sphere tracer & Perlin noise perturbation
 * TODO Code (maybe): Isosurfaces in POV-Ray
 * TODO Code (maybe): Shaders in POV-Ray
+
+* Slush Bucket
+** Movies & 3D CGI
+
+   - Various practical problems:
+     - Raytracing is slow
+     - Scanline rendering is faster, but looks bad
+     - Image are sort of bulky and inelegant
+
+ #+BEGIN_NOTES
+   - Have a good definition/example of scanline rendering
+ #+END_NOTES
+
+*** Pixar & RenderMan
+
+    - Facetize everything to triangles < 1 pixel
+    - RenderMan Shading Language
+    - Pre-compute & pre-shade
+    - Distributes easily across a cluster
+    - [[https://www.youtube.com/watch?v=ffIZSAZRzDA][Tin Toy (1988)]]: First CGI film to win Oscar
+    - Toy Story (1995): First full-length CGI film
+
+** The point...
+
+- Both sort of replaced *data* with *functions*.
+  - Instead of triangle meshes: basic shapes + transformations
+  - Instead of image maps: compositions of noise functions
+- Both used functional approaches as practical solutions.
+
+** Raytracing limitations: Lighting
+
+   - Simple raytracing by itself handles only *direct illumination*.
+   - [[https://en.wikipedia.org/wiki/Global_illumination][Global illumination]]
+     - Numerical approximations of the [[https://en.wikipedia.org/wiki/Rendering_equation][rendering equation]]
+       - [[https://en.wikipedia.org/wiki/Unbiased_rendering][Unbiased]] vs. biased renderers
+     - Path tracing
+     - Metropolis Light Transport
+     - Photon mapping
+     - [[https://en.wikipedia.org/wiki/Radiosity_(computer_graphics)][Radiosity]]
+     - [[https://en.wikipedia.org/wiki/Ambient_occlusion][Ambient occlusion]]
+   - This is a "hard problem"(tm) and I'm ignoring it here.
+
+ #+BEGIN_NOTES
+   - How necessary is this slide?
+   - Give real-world example of why this is needed
+   - Explain why ray tracing by itself doesn't cover this
+   - Show examples of some (e.g. AO)
+   - http://www.yafaray.org/documentation/userguide/lightingmethods
+ #+END_NOTES
+
+
+** Modern Day
+   - Raytracing is now much more common in movie CGI
+   - Intel and NVidia are also pushing it for realtime rendering
+   - RenderMan Shading Language is now deprecated
+   - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
+     - [[http://www.blender.org/][Blender]] implements OSL
+
