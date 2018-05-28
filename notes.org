@@ -8,13 +8,6 @@
     3D scenes (not 2D)... without actually having to write detailed
     examples?
   - Surface opacity/translucency from shaders!
-  - Perhaps explain (if time) volume rendering via raymarching as a
-    case related to distance fields?
-  - It is possible to represent infinite models and scenes with
-    distance fields
-    - Simple cases (infinite tiling/mirroring), more complex (IFS),
-      ridiculously complex (the entire Mandelbulb fractal).
-    - Compare this with something like lazy sequences
   - GigaVoxels is sort of procedural too
 * Main focuses for remaining work
   - Fix up sphere tracing explanation.
@@ -41,17 +34,11 @@
     - Can I show slides?  (Need GUI probably)
       - Couldn't do speaker notes most likely
     - Does mouse work?
-* TODO Demoscene & pouet?
+* TODO Transfer my CS6460 examples
 * TODO Explain isosurfaces starting from 2D examples
 * TODO Show some implicit surfaces I did in POV-Ray?
-* TODO Note that 2D approach is an image creation method on its own 
-  - Link to Functional Images or whatever
-  - Show some of my examples?
 * TODO If time: Give some folded IFS-derived fractals.
-  - However, [[http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/][Distance Estimated 3D Fractals (III): Folding Space]] gives
-    some fractals (IFS-like rather than escape-time) that look much more
-    feasible, and use things like absolute value to fold space, paired
-    with rotations.
+  - Only do this if there's time.
   - Explaining Mandelbulb formulas in detail is out of scope.  Perhaps
     show Mandelbulb but that's it.
 * TODO Find workable sphere tracer (or use what I had)

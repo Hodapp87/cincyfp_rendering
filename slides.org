@@ -2,6 +2,8 @@
 #+DATE: 2018-06-12
 #+AUTHOR: Chris Hodapp
 
+# (load-library "ox-reveal")
+
 * Introduction
   - Graphics were what first interested me in computers.
     - Dazzle
@@ -123,7 +125,7 @@
    - Show noise3D.frag
  #+END_NOTES
 
-** Summary
+** Upside
 
    - Technical constraints led to FP approaches - but these approaches
      brought other benefits:
@@ -131,6 +133,9 @@
        for complex "natural" textures
      - Can be sampled at arbitrary resolution
      - Independent from underlying renderer
+   - It's still an image composition method/genre on its own,
+     e.g. http://conal.net/papers/functional-images/ (yes, Conal
+     Elliott)
 
  #+BEGIN_NOTES
    - I am cheating slightly since some of these benefits are from
@@ -197,12 +202,15 @@
     around, rather than raytracing).
   - However, shaders evolved to handle all sorts of less "faked"
     lighting
-  - TODO: Visualizations? POV-Ray?
 #+END_NOTES
 
 ** Raytracing
 
    https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ray_trace_diagram.svg/875px-Ray_trace_diagram.svg.png
+
+** POV-Ray example
+
+   https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Glasses_800_edit.png/1280px-Glasses_800_edit.png
 
 ** POV-Ray, Clojure, Twitter, and Heroku?
 
@@ -237,13 +245,13 @@
 
    - As far as we care: isosurfaces are functions $f(x,y,z)$
      representing a 3D surface in which, for 3D point $(x,y,z)$:
+     - $f(x,y,z) = 0$ on surface
      - $f(x,y,z) > 0$ outside of surface
      - $f(x,y,z) < 0$ inside of surface
-     - $f(x,y,z) = 0$ on surface
    - Simple example: A sphere of radius $R$ centered at $(0,0,0)$ is
      $$f(x,y,z) = (x^2+y^2+z^2)-R^2$$
 
-** I'm sorry. I didn't name them.
+** I'm sorry. I didn't make the names.
 
    - *Isosurface = [[https://en.wikipedia.org/wiki/Function_representation][F-Rep]] = implicit surface = level surface*
    - *Signed distance estimate = signed distance bound = unbounding volume (?)*
@@ -265,53 +273,59 @@
      caring at this point
 
 ** Why bother?
-   - Because you can do it in realtime completely in a GPU shader
-   - Blah blah blah mathematical elegance
    - Similar handy things as shaders, plus 3D stuff:
      - Domain transformations (see: [[http://iquilezles.org/www/articles/distfunctions/distfunctions.htm][Modeling with distance functions]])
      - CSG
+   - Blah blah blah mathematical elegance
    - Because it's cool, mostly
+   - With *sphere tracing* (or *distance estimation*) you can render
+     these in realtime on the GPU
 
 #+BEGIN_NOTES
   - Link to some of IQ's shadertoy or pouet examples
   - Show libfive examples
-#+END_NOTES
-
-** Sphere tracing / distance estimation
-
-  - Ray marching from distance bounds/estimates
   - Íñigo Quílez: [[http://www.iquilezles.org/www/material/nvscene2008/rwwtt.pdf][Rendering Worlds with Two Triangles]]
-
-#+BEGIN_NOTES
-  - Link to some of IQ's shadertoy or pouet examples
-#+END_NOTES
-
-** The point...
-
-   - Raytracing relies on either:
-     - very limited parametric shapes (as it requires ray intersection
-       formulas),
-     - Dense triangle meshes that are approximate
-   - Neither one is a particularly "functional" approach.
-
-#+BEGIN_NOTES
-  - This is oversimplifying a little
-  - Meshes are just sort of flat data
-  - Not many transformations work meaningfully on the parametric
-    shapes (without simply facetizing them)
-#+END_NOTES
-
-** The point...
-
-   - F-Reps bypass all of this
-   - Arbitrary domain transformations
-
-#+BEGIN_NOTES
   - Explain/show what domain transformations are
 #+END_NOTES
 
+** How is this used in practice?
+   
+   - It's sorta not, unless you count:
+     - Demoscene (e.g. [[https://www.pouet.net/][pouët.net]]), which is sorta defined by its
+       impractical size constraints
+       - e.g. https://www.pouet.net/prod.php?which=71778
+     - [[https://fractalforums.org/][Fractalforums]], which is sorta defined by a love of math and
+       fractals
+     - I don't know, it might be used for rendering voxels or
+       something
+   - Just shut up, it's neat
+
+* The point of all this
+
+  - Shaders, isosurfaces, hypertextures, and possibly some other
+    representations share one property: they are functions which
+    always explicitly take *space* as their input.
+    - They can be composed with any function that maps space to space.
+
+#+BEGIN_NOTES
+  - https://mrl.nyu.edu/~perlin/doc/hypertexture/
+#+END_NOTES
+
+** Laziness
+  - Shaders are basically /lazy images/
+  - Isosurfaces are basically /lazy geometry/
+  - They can encode - in theory - image and geometry data that is
+    infinite in size or in detail
+    - ...and incur cost only for the part that is needed
+    - ...assuming it can actually be encoded meaningfully as a
+      function
+  - As an extreme example of that, see: [[http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/][Syntopia: Distance Estimated
+    3D Fractals]]
+    - Distance bounds can be made for both [[https://en.wikipedia.org/wiki/Iterated_function_system][IFS]] and escape-time
+      fractals
 
 * Other Links
+
   - [[https://github.com/patriciogonzalezvivo/glslViewer][glslViewer]] & [[https://thebookofshaders.com/][Book of Shaders]]
   - Literally everything from [[http://iquilezles.org/www/index.htm][Íñigo Quílez]]
   - [[http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/][Syntopia: Distance Estimated 3D Fractals]] & [[https://syntopia.github.io/Fragmentarium/][Fragmentarium]] / [[https://github.com/3Dickulus/FragM][FragM]]
