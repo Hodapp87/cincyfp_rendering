@@ -33,7 +33,7 @@ vec4 map( in vec3 p )
     p.y += 0.1 * sin(p.z * 11.0 + u_time * 0.53);
     p.z += 0.1 * sin(p.z * 11.0 + u_time * 0.53);
     */
-    vec4 x = vec4(p * 2, u_time * 0.05);
+    vec4 x = vec4(p * 2.0, u_time * 0.05);
     x.x -= u_time * 1.0;
     vec4 x2 = vec4(p * 0.05, u_time * 0.1);
     p += 0.1 * snoise(x) + 0.2 * snoise(x2);
@@ -42,7 +42,7 @@ vec4 map( in vec3 p )
     vec4 res = vec4( d, 1.0, 0.0, 0.0 );
 
     float s = 1.0;
-    for( int m=0; m<2; m++ )
+    for( int m=0; m<1; m++ )
     {
         vec3 a = mod( p*s, 2.0 )-1.0;
         s *= 3.0;
@@ -76,10 +76,11 @@ vec2 castRay( in vec3 ro, in vec3 rd )
     
     float t = tmin;
     float m = -1.0;
-    for( int i=0; i<64; i++ )
+    for( int i=0; i<32; i++ )
     {
-	    float precis = 0.0005*t;
-	    vec2 res = map( ro+rd*t );
+	    //float precis = 0.0005*t;
+        float precis = 0.005*t;
+	    vec2 res = map( ro+rd*t ).xy;
         if( abs(res.x) <precis || t>tmax ) break;
         t += res.x;
 	    m = res.y;

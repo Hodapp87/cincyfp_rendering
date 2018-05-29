@@ -39,12 +39,17 @@ void main() {
     vec2 p = (u_view2d * vec3(gl_FragCoord.xy, 1.0)).xy;
     p = p*scale + offset;
 
-    float ctl = (snoise(vec3(p, u_time * 0.2)) + \
-                        snoise(vec3(p * vec3(8.0, 1.0, 1.0), u_time * 0.4)) + \
-                        snoise(vec3(p * vec3(2.0, 2.0, 1.0), u_time * 0.1)) \
+    float ctl = (snoise(vec3(p.xy, u_time * 0.2)) + \
+                 snoise(vec3(p * vec2(8.0, 1.0), u_time * 0.4)) + \
+                 snoise(vec3(p * vec2(2.0, 2.0), u_time * 0.1)) \
         );
-    
-    gl_FragColor.rgb = ctl * (ctl > 0.1); // snoise(vec3(p * 0.5, 0.0)) * ctl;
+
+    if (ctl > 0.1) {
+        gl_FragColor.rgb = vec3(ctl);
+    } else {
+        gl_FragColor.rgb = vec3(0.0);
+    }
+    //gl_FragColor.rgb = ctl * (ctl > 0.1); // snoise(vec3(p * 0.5, 0.0)) * ctl;
     gl_FragColor.a = 1.0;
 }
 

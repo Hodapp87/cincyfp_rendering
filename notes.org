@@ -15,12 +15,18 @@
 * TODO Read 'Book of Shaders'
   - This is an excellent introduction that uses GLSL
 * TODO Hardware for presentation
-  - [ ] Is my laptop fast enough?  What adapters might I need?
+  - [X] Is my laptop fast enough?  What adapters might I need?
+    - No, it's really not.  Mandelbulb is unusable, Menger cube with
+      Simplex noise is < 1 fps.
   - [ ] Figure out what causes my laptop's glslViewer issues
-    - It was fine after a fresh reset. Suspending?  Switching screens?
+    - Works after fresh reset
+    - Works after screen switch with my xrandr script
+    - Suspend?
   - [ ] Does glslViewer run on my NVidia Jetson?
+    - Or anything else that works similarly?
+    - Can I do multi screens and see slide notes?  (Or just get by without them)
   - [ ] Could I do this on a Pi?
-    - Fast enough?  (Try it)
+    - Fast enough?  (Very likely not)
     - Probably can't run libfive very well
     - Can I show the GLSL framebuffer and code at the same time?
     - Can I show slides?  (Need GUI probably)
