@@ -9,6 +9,11 @@
     examples?
   - Surface opacity/translucency from shaders!
   - GigaVoxels is sort of procedural too
+  - Context Free (recall the April 2019 hack night I did) basically
+    also expresses lazy (2D) geometry
+  - Maybe show some demoscene stuff like 2nd Reality, and the TRSI TDT
+    demo from Cubulus, which I could show directly in DOSBOX.  (This
+    isn't really functional, more just procedural.)
 * Main focuses for remaining work
   - Lots of picture examples!
   - Lots of code examples!
