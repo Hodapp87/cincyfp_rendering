@@ -40,11 +40,11 @@
    
    - Graphics shaders
      - /Realtime (i.e. video games)/
-       - OpenGL Shading Language (GLSL)
+       - OpenGL Shading Language (GLSL) & WebGL
      - /Offline (i.e. production-grade movie CGI)/
        - [[https://github.com/imageworks/OpenShadingLanguage][Open Shading Language]] (OSL) from Sony
-       - RenderMan Shading Language from Pixar (deprecated for OSL &
-         C++)
+       - RenderMan Shading Language from Pixar - now deprecated for
+         OSL & DSOs (dynamic shadeops) in C++
    - 3D models as functional representations ([[https://en.wikipedia.org/wiki/Function_representation][F-Reps]])
      - a.k.a. implicit surfaces/isosurfaces
 
@@ -154,6 +154,8 @@
       laser scan, Finite Element Analysis)
     - What transformations should be easy?
     - Must it be a manifold with interior/exterior?
+  - See also:
+    http://www.cs.toronto.edu/~jacobson/images/geometry-processing-in-the-wild-alec-jacobson.pdf
 
 #+BEGIN_NOTES
   - Geometry & shaders don't have sharp boundaries.  In RenderMan and
@@ -230,10 +232,11 @@
 
 * Raymarching & F-Reps
 
-  - Raymarching is sort of like raytracing, but for where intersection
-    must be iterative & approximate rather than analytical:
-    - Surfaces that are a pain (no analytic intersection formula)
-    - Things with no surfaces (e.g. volumes with varying density)
+  - Raymarching is sort of like raytracing - but intersection is
+    iterative & approximate rather than analytical:
+    - Surfaces that are a pain - no analytic intersection formula
+    - Things with no surfaces - e.g. volumes with varying density
+    - Things with infinitely detailed surfaces - e.g. fractals
   - [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.438.4926&rep=rep1&type=pdf][Ken Perlin again: Hypertexture (1989)]]
   - [[https://www.researchgate.net/publication/234777691_Ray_tracing_deterministic_3-D_fractals][John C. Hart: Ray tracing deterministic 3D fractals (1989)]]
 
@@ -262,6 +265,7 @@
      - Signed distance bound (thus, isosurface also) with more rules:
        $(x,y,z)$ is distance $|f(x,y,z)|$ away from nearest point on
        surface.
+   - *Hypertexture* also refers to this, except for when it doesn't.
 
 ** I'm sorry, part 2
 
