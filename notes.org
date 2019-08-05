@@ -20,6 +20,7 @@
       directly.
     - Shaders were then used to implement... functional-ish imagery
       via sphere tracers and the like.
+  -  [[https://github.com/xx3000/mTec][mTec - Efficient rendering with distance fields]] - see this
 * Main focuses for remaining work
   - Lots of picture examples!
   - Lots of code examples!
@@ -116,4 +117,5 @@
    - RenderMan Shading Language is now deprecated
    - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
      - [[http://www.blender.org/][Blender]] implements OSL
+     - Appleseed does too
 
