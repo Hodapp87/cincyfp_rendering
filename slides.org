@@ -41,6 +41,7 @@
    - Graphics shaders
      - /Realtime (i.e. video games)/
        - OpenGL Shading Language (GLSL) & WebGL
+       - NVidia Cg (deprecated), Microsoft HLSL
      - /Offline (i.e. production-grade movie CGI)/
        - [[https://github.com/imageworks/OpenShadingLanguage][Open Shading Language]] (OSL) from Sony
        - RenderMan Shading Language from Pixar - now deprecated for
