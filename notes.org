@@ -23,26 +23,9 @@
 * Main focuses for remaining work
   - Lots of picture examples!
   - Lots of code examples!
-* TODO Read 'Book of Shaders'
-  - This is an excellent introduction that uses GLSL
-* TODO Hardware for presentation
-  - [X] Is my laptop fast enough?  What adapters might I need?
-    - No, it's really not.  Mandelbulb is unusable, Menger cube with
-      Simplex noise is < 1 fps.
-  - [ ] Figure out what causes my laptop's glslViewer issues
-    - Works after fresh reset
-    - Works after screen switch with my xrandr script
-    - Suspend?
-  - [ ] Does glslViewer run on my NVidia Jetson?
-    - Or anything else that works similarly?
-    - Can I do multi screens and see slide notes?  (Or just get by without them)
-  - [ ] Could I do this on a Pi?
-    - Fast enough?  (Very likely not)
-    - Probably can't run libfive very well
-    - Can I show the GLSL framebuffer and code at the same time?
-    - Can I show slides?  (Need GUI probably)
-      - Couldn't do speaker notes most likely
-    - Does mouse work?
+* TODO Say something on parametric CAD (mention CadQuery, OpenSCAD, maybe FreeCAD)
+* TODO Maybe mention "Functional Programming for Compiling and Decompiling Computer-Aided Design"
+  - See log.org notes
 * TODO Transfer my CS6460 examples
 * TODO Explain isosurfaces starting from 2D examples
 * TODO Show some implicit surfaces I did in POV-Ray?
@@ -81,13 +64,6 @@
     - [[https://www.youtube.com/watch?v=ffIZSAZRzDA][Tin Toy (1988)]]: First CGI film to win Oscar
     - Toy Story (1995): First full-length CGI film
 
-** The point...
-
-- Both sort of replaced *data* with *functions*.
-  - Instead of triangle meshes: basic shapes + transformations
-  - Instead of image maps: compositions of noise functions
-- Both used functional approaches as practical solutions.
-
 ** Raytracing limitations: Lighting
 
    - Simple raytracing by itself handles only *direct illumination*.
@@ -116,4 +92,5 @@
    - RenderMan Shading Language is now deprecated
    - Sony Pictures ImageWorks: [[https://github.com/imageworks/OpenShadingLanguage][OSL (Open Shading Language)]]
      - [[http://www.blender.org/][Blender]] implements OSL
+
 

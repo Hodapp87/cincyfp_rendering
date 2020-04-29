@@ -294,6 +294,14 @@
   - Explain/show what domain transformations are
 #+END_NOTES
 
+** Why bother? (2)
+
+   - SDFs don't have to be analytical/functional. They can be approximations
+   - https://github.com/xx3000/mTec - "Efficient Rendering with
+     Distance Fields"
+   - KinectFusion used Truncated SDFs to store geometry on GPU and
+     efficiently work with it
+
 ** How is this used in practice?
    
    - It's sorta not, unless you count:
@@ -305,6 +313,21 @@
      - I don't know, it might be used for rendering voxels or
        something
    - Just shut up, it's neat
+
+** How is this used in practice? (2)
+
+   - Commercially: [[https://ntopology.com/][nTopology]] CAD is based on SDFs (thanks Jeff Burdick
+     for showing me)
+   - [[http://www.implicitcad.org/][ImplicitCAD]] language (sort of like OpenSCAD)
+   - [[https://github.com/curv3d/curv][curv]] language by Doug Moen
+   - [[https://docs.racket-lang.org/ruckus/index.html][Ruckus]] "Procedural CAD for Weirdos" (Racket Scheme based)
+   - [[https://libfive.com/][libfive]] (Guile Scheme based)
+     - [[https://github.com/mkeeter/antimony][antimony]], [[https://www.mattkeeter.com/projects/ao/][Ao]] - same author (Matt Keeter)
+   - [[https://en.wikipedia.org/wiki/HyperFun][HyperFun]]
+
+#+BEGIN_NOTES
+   - http://www.implicitcad.org/editor - demo in browser
+#+END_NOTES
 
 * The point of all this
 
@@ -329,6 +352,13 @@
     3D Fractals]]
     - Distance bounds can be made for both [[https://en.wikipedia.org/wiki/Iterated_function_system][IFS]] and escape-time
       fractals
+
+** Representation
+
+- Both sort of replaced *data* with *functions*.
+  - Instead of triangle meshes: basic shapes + transformations
+  - Instead of image maps: compositions of noise functions
+- Both used functional approaches as practical solutions.
 
 * Other Links
 
