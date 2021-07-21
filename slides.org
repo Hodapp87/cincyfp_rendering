@@ -155,6 +155,7 @@
       laser scan, Finite Element Analysis)
     - What transformations should be easy?
     - Must it be a manifold with interior/exterior?
+    - Implicit vs. explicit?
   - See also:
     http://www.cs.toronto.edu/~jacobson/images/geometry-processing-in-the-wild-alec-jacobson.pdf
 
@@ -296,7 +297,9 @@
 
 ** Why bother? (2)
 
-   - SDFs don't have to be analytical/functional. They can be approximations
+   - SDFs don't have to be analytical/functional. They can be
+     approximate numerical representations, e.g. a sampling over a
+     3D grid
    - https://github.com/xx3000/mTec - "Efficient Rendering with
      Distance Fields"
    - KinectFusion used Truncated SDFs to store geometry on GPU and
